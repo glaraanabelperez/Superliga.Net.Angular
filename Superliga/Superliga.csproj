@@ -248,6 +248,10 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Superliga.Data\Superliga.Data.csproj">
+      <Project>{65C0F169-9D79-4808-8004-DA5D89F58DAC}</Project>
+      <Name>Superliga.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Superliga.Logic\Superliga.Logic.csproj">
       <Project>{F963C4B7-50E5-4555-BE48-4B3F2A610019}</Project>
       <Name>Superliga.Logic</Name>

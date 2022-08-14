@@ -29,7 +29,7 @@ namespace Superliga.Controllers
         [HttpGet]
         public string GetList()
         {
-            return partnerlogic.test;
+            return partnerlogic.getSring();
         }
 
         // POST api/values

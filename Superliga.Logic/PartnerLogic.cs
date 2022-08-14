@@ -11,16 +11,11 @@ namespace Superliga.Logic
 
     public class PartnerLogic : BaseData
     {
-        public string test;
 
-        public PartnerLogic()
+   
+        public string getSring()
         {
-             test = data.partner.tes2;
-        }
-
-        public String getSring()
-        {
-            return test;
+            return data.test;
         }
 
     }
