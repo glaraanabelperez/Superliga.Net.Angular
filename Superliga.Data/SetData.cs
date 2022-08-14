@@ -44,38 +44,48 @@ namespace Superliga.Data
             List<string> listNames = new List<string>();
 
             lineas = System.IO.File.ReadAllLines(@"C:\Users\Lara\source\repos\Superliga.Net.Angular\Superliga\DataCvs\socios.csv");
-            //var test=lineas.Where(li => li.Contains("soltero"));
-            //var campos1 = lineas[0].Split(';');
-            //var test2 = 0;
-            //var test3 = Array.FindAll(lineas, c => c.Split(';').Contains("Soltero"));
-            //var test4 = 0;
+            var test = lineas.Where(li => li.Contains("soltero"));
+            var campos1 = lineas[0].Split(';');
+            var test3 = Array.FindAll(lineas, c => c.Split(';').Contains("Soltero"));
+
+            var test6 = lineas.Where(l => l.Split(';').Contains("Soltero")).Take(100).ToList();
+            //var query = lineas
+            //                .GroupBy(x => x.Split(';'))
+            //                .Where(g => g.Count() > 1).Select(y => new { Element = y.Key, Counter = g.Count() })
+            //                .ToList();
+
+            var query = lineas.GroupBy(x => x).Where(g => g.Count() > 1).Select(y => y.Key).ToList();
+            var test5 = lineas.GroupBy(x => x.Split(';')[0]).ToList();
+            var test7 = lineas.GroupBy(x => x.Split(';')[0]).Where(g => g.Count() > 1).Select(y => y.Key).ToList();
+                var test8 = lineas
+                .GroupBy(x => x.Split(';')[0])
+                .Where(g => g.Count() > 1)
+                .OrderByDescending(x => x.Count())
+                .Select(x => new { Element = x.Key, Counter = x.Count() }).ToList();
+
+            //while (!reader.EndOfStream)
+            //{
+            //    var line = reader.ReadLine();
+            //    var values = line.Split(';');
+            //    var dr = dtExcelTable.NewRow();
+
+            //    //llena tabla con casados universitarios
+            //    if (values[3].ToLower().Equals("casado") && values[4].ToLower().Equals("universitario"))
+            //    {
+            //        var d = 0;
+            //        while (d != 5)
+            //        {
+            //            dr[d] = values[d];
+            //            d = d + 1;
+            //        }
+            //        dtExcelTable.Rows.Add(dr);
+
+            //    }
+            //compara nombre
 
 
 
 
-            while (!reader.EndOfStream)
-            {
-                var line = reader.ReadLine();
-                var values = line.Split(';');
-                var dr = dtExcelTable.NewRow();
-
-                //llena tabla con casados universitarios
-                if (values[3].ToLower().Equals("casado") && values[4].ToLower().Equals("universitario"))
-                {
-                    var d = 0;
-                    while (d != 5)
-                    {
-                        dr[d] = values[d];
-                        d = d + 1;
-                    }
-                    dtExcelTable.Rows.Add(dr);
-
-                }
-                //compara nombre
-
-
-
-            }
         }
     }
 }
