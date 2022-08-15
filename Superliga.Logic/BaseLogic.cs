@@ -8,10 +8,7 @@ namespace Superliga.Data
 {
     public class BaseLogic
     {
-        protected readonly BaseData base_ ;
-        public BaseLogic()
-        {
-            base_ = new BaseData();
-        }
+        protected readonly string[] base_ = BaseData.Instance.data;
+    
     }
 }

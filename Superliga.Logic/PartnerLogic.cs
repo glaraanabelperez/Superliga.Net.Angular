@@ -14,14 +14,14 @@ namespace Superliga.Logic
 
         public int CountRecords()
         {
-            return base_.data.Count();
+            return base_.Count();
         }
 
         //Promedio edad socios registrados
         public int GetAgeAverage()
         {
-            int agesSum = (from x in base_.data
-                           select ConvertToInt(base_.data[0].Split(';')[1])).Sum();
+            int agesSum = (from x in base_
+                           select ConvertToInt(base_[0].Split(';')[1])).Sum();
                         
 
             int total = CountRecords();
@@ -33,7 +33,7 @@ namespace Superliga.Logic
         //Listado con las 100 primeras personas casadas, con estudios Universitarios, ordenadas de menor a mayor según su edad.
         public List<PartnerDto> GetTopOneHundred()
         {
-            var records = base_.data
+            var records = base_
                 .Where(r => r.Split(';')[3].Contains("Soltero") 
                     && r.Split(';')[4].Contains("Universitario"))
                 .OrderBy(l => l.Split(';')[1])
@@ -52,7 +52,7 @@ namespace Superliga.Logic
         {
 
             var records= (
-                            base_.data
+                            base_
                             .Where(r => r.Split(';')[2].Equals("River"))
                             .Select(x => x)
                             )
@@ -72,7 +72,7 @@ namespace Superliga.Logic
         {
             List<TeamsDto> listTeams = new List<TeamsDto>();
 
-            var teamsNamesList = base_.data.Select(x => x.Split(';')[2]).Distinct().ToList();
+            var teamsNamesList = base_.Select(x => x.Split(';')[2]).Distinct().ToList();
             foreach(var teamNames in teamsNamesList)
             {
 
@@ -93,7 +93,7 @@ namespace Superliga.Logic
         protected int AverageAgeOfTeam(string team)
         {
 
-            var filterListTeam = from x in base_.data
+            var filterListTeam = from x in base_
                                  where x.Split(';')[2].Equals(team)
                           select ConvertToInt(x.Split(';')[1]);
             
@@ -120,7 +120,7 @@ namespace Superliga.Logic
         protected int GetMaxAgeTeam(string team)
         {
             var result = (
-                            base_.data
+                            base_
                             .Where(r => r.Split(';')[2].Equals(team))
                             .Select(x => ConvertToInt(x.Split(';')[1]))
                             );
@@ -133,7 +133,7 @@ namespace Superliga.Logic
         protected int GetMinAgeTeam(string team)
         {
             var result = (
-                            base_.data
+                            base_
                             .Where(r => r.Split(';')[2].Equals(team))
                             .Select(x => ConvertToInt(x.Split(';')[1]))
                             );
