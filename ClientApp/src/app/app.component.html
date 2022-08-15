@@ -4,9 +4,9 @@
     <h5 class="card-title">Filtros</h5>
     <select class="custom-select custom-select-lg mb-3" [(ngModel)]="action"  [ngModelOptions]="{standalone: true}" requerid>
       <option [ngValue]="null" selected="true" ><p class="card-text">Select</p></option>
-      <option *ngFor="let a of actionsList"><p class="card-text">{{a}}</p></option>
+      <option *ngFor="let a of actionList"><p class="card-text">{{a}}</p></option>
     </select>
     <button  (click)="search()" class="btn btn-primary" >Go</button>
   </div>
 </form>
-<app-super-liga [actionSelect]="action"></app-super-liga>
+<app-super-liga></app-super-liga>
