@@ -16,11 +16,21 @@ namespace Superliga.Controllers
 
         [Route("api/Partners/records")]
         [HttpGet]
-        public int GetRecords()=> pl.CountRecords();
+        public int GetRecords() => pl.CountRecords();
 
         [Route("api/Partners/ageAverage")]
         [HttpGet]
-        public int GetAgeAverage()=> pl.GetAgeAverage();
+        public IHttpActionResult GetAgeAverage() {
+
+            try
+            {
+                return Ok(pl.GetAgeAverage());
+            }
+            catch (FormatException e)
+            {
+                return Content(HttpStatusCode.NoContent, e.Message);
+            }
+        } 
         
         [Route("api/Partners/list")]
         [HttpGet]
@@ -32,7 +42,17 @@ namespace Superliga.Controllers
 
         [Route("api/Partners/infoTeams")]
         [HttpGet]
-        public List<TeamsDto> GetTeamsInfo() => pl.GetTeamsInfo();
+        public IHttpActionResult GetTeamsInfo()
+        {
+            try
+            {
+                return Ok(pl.GetTeamsInfo());
+            }
+            catch (FormatException e)
+            {
+                return Content(HttpStatusCode.NoContent, e.Message);
+            }
+        } 
 
  
     }
