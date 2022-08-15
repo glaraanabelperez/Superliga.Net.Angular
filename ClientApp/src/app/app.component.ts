@@ -5,6 +5,20 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent {
-  title = 'ClientApp';
+
+  public title = 'ClientApp';
+  public actionsList:Array<string>=["countRegister", "lis100", "tpFive"];
+  public action:string;
+
+  constructor(){
+  }
+
+  ngOnInit() {}
+
+  search(){
+    console.log("aca", this.action)
+  }
+
 }
