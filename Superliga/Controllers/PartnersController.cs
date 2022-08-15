@@ -4,47 +4,36 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Superliga.Entities;
 using Superliga.Logic;
+using Superliga.ModelsResponse;
 
 namespace Superliga.Controllers
 {
     public class PartnersController : ApiController
     {
-        public PartnerLogic partnerlogic = new PartnerLogic();
+        public PartnerLogic pl = new PartnerLogic();
 
-        // GET api/values
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/values/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        
-        [Route("api/Partners/List")]
+        [Route("api/Partners/records")]
         [HttpGet]
-        public string GetList()
-        {
-            return partnerlogic.getSring();
-        }
+        public int GetRecords()=> pl.CountRecords();
 
-        // POST api/values
-        public void Post([FromBody] string value)
-        {
-        }
+        [Route("api/Partners/ageAverage")]
+        [HttpGet]
+        public int GetAgeAverage()=> pl.GetAgeAverage();
+        
+        [Route("api/Partners/list")]
+        [HttpGet]
+        public List<PartnerDto> GetTopOneHundred()=> pl.GetTopOneHundred();
 
-        // PUT api/values/5
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        [Route("api/Partners/topFive")]
+        [HttpGet]
+        public List<string> GetTopFiveNames()=> pl.GetTopFiveNames();
 
-        // DELETE api/values/5
-        public void Delete(int id)
-        {
-        }
+        [Route("api/Partners/infoTeams")]
+        [HttpGet]
+        public List<TeamsDto> GetTeamsInfo() => pl.GetTeamsInfo();
+
+ 
     }
 }

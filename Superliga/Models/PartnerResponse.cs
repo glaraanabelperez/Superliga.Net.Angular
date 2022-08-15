@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace Superliga.Entities
+namespace Superliga.ModelsResponse
 {
-    public class Partner
+    public class PartnerResponse
     {
         public string Name { get; set; }
         public int Age { get; set; }
@@ -14,6 +13,5 @@ namespace Superliga.Entities
         public string State { get; set; }
         public string Studies { get; set; }
 
-       
     }
 }

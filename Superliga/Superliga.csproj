@@ -161,6 +161,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\PartnerResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -216,7 +217,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -251,6 +251,10 @@
     <ProjectReference Include="..\Superliga.Data\Superliga.Data.csproj">
       <Project>{65C0F169-9D79-4808-8004-DA5D89F58DAC}</Project>
       <Name>Superliga.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Superliga.Entities\Superliga.Entities.csproj">
+      <Project>{EDC4FA24-A2C3-46EF-9688-B3C0DE23714F}</Project>
+      <Name>Superliga.Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\Superliga.Logic\Superliga.Logic.csproj">
       <Project>{F963C4B7-50E5-4555-BE48-4B3F2A610019}</Project>

@@ -12,7 +12,7 @@ namespace Superliga.Logic
     public class PartnerLogic : BaseData
     {
 
-        public int CountPepopleRegistered()
+        public int CountRecords()
         {
             return Convert.ToInt32(data.lineas.Count());
         }
@@ -30,7 +30,7 @@ namespace Superliga.Logic
             return result;
         }
 
-        //Devuelve listado con las 100 primeras personas casadas, con estudios Universitarios, ordenadas de menor a mayor según su edad.
+        //Listado con las 100 primeras personas casadas, con estudios Universitarios, ordenadas de menor a mayor según su edad.
         public List<PartnerDto> GetTopOneHundred()
         {
             var records = data.lineas
@@ -47,7 +47,7 @@ namespace Superliga.Logic
 
         }
 
-        //Devuelve listado con los 5 nombres más comunes entre los hinchas de River.
+        //Listado con los 5 nombres más comunes entre los hinchas de River.
         public List<string> GetTopFiveNames()
         {
             //var records = data.lineas
@@ -74,19 +74,33 @@ namespace Superliga.Logic
         //la menor edad registrada y la mayor edad registrada.
         public List<TeamsDto> GetTeamsInfo()
         {
-            
+            List<TeamsDto> listTeams = new List<TeamsDto>();
 
-            var teamsList = data.lineas.Select(x => x.Split(';')[1]).Distinct().ToList();
-            foreach(var team in teamsList)
+            var teamsNamesList = data.lineas.Select(x => x.Split(';')[1]).Distinct().ToList();
+            foreach(var teamNames in teamsNamesList)
             {
-                AverageAgeOfTeam(team);
+
+                var maxInt = ConvertToInt(GetMaxAgeTeam(teamNames));
+                var minInt = ConvertToInt(GetMinAgeTeam(teamNames));
+
+                TeamsDto team = new TeamsDto();
+                team.Team = teamNames;
+                team.AgeAverage= AverageAgeOfTeam(teamNames);
+                team.AgeMax = maxInt;
+                team.AgeMin = minInt;
+
+                listTeams.Add(team);
             }
+
             return null;
         }
 
-        public int AverageAgeOfTeam(string team)
+
+        //
+        protected int AverageAgeOfTeam(string team)
         {
             var team_ = team.ToLower();
+
             var filterListTeam = from x in data.lineas
                           where x.Split(';')[2].Equals(team_)
                           select x;
@@ -98,6 +112,38 @@ namespace Superliga.Logic
 
             int totalPeople= filterListTeam.Count();
             var result = Convert.ToInt32(agesSum) / totalPeople;
+
+            return result;
+        }
+
+        protected int ConvertToInt( string data)
+        {
+            try
+            {
+               return Int32.Parse(data);
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return 0;
+        }
+
+        protected string GetMaxAgeTeam(string team)
+        {
+            var result=(from x in data.lineas
+             where x.Split(';')[3].Equals(team)
+             select x.Split(';')[3]).Max();
+
+            return result;
+        }
+
+        protected string GetMinAgeTeam(string team)
+        {
+            var result = (from x in data.lineas
+                          where x.Split(';')[3].Equals(team)
+                          select x.Split(';')[3]).Min();
 
             return result;
         }
