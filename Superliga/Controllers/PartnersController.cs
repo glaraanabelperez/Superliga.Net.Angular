@@ -7,9 +7,12 @@ using System.Web.Http;
 using Superliga.Entities;
 using Superliga.Logic;
 using Superliga.ModelsResponse;
+using System.Web.Http.Cors;
+
 
 namespace Superliga.Controllers
 {
+    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     public class PartnersController : ApiController
     {
         public PartnerLogic pl = new PartnerLogic();
