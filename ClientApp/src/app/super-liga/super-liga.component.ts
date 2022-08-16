@@ -9,18 +9,15 @@ import { SuperLigaService } from '../servicios/super-liga.service';
 })
 export class SuperLigaComponent implements OnInit {
 
-  // @Input()actionSelect: string;
   public action$: Observable<string>;
   public action=null;
-  public service:SuperLigaService;
 
-  constructor( serviceSuperLiga:SuperLigaService) { 
-    this.service=serviceSuperLiga;
+  constructor( public serviceSuperLiga:SuperLigaService) { 
   
   }
 
   ngOnInit(): void {
-    this.action$ = this.service.getAction();
+    this.action$ = this.serviceSuperLiga.getFilter();
     this.action$.subscribe(action => this.action = action);
   }
 

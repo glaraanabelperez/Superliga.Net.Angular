@@ -2,13 +2,6 @@ import { Component } from '@angular/core';
 import { Action } from 'rxjs/internal/scheduler/Action';
 import { SuperLigaService } from './servicios/super-liga.service';
 
-// selector: 'app-myview',
-// template: `<div *ngFor="let key of objectKeys(items)">{{key + ' : ' + items[key]}}</div>`
-// })
-
-// export class MyComponent {
-// objectKeys = Object.keys;
-// ;
 
 
 @Component({
@@ -21,25 +14,24 @@ import { SuperLigaService } from './servicios/super-liga.service';
 export class AppComponent {
 
   public title = 'ClientApp';
-  public action:string;
-  public actionList:Array<string>=[];
+  public filter:string;
+  public filterList:Array<string>=[];
 
   constructor(public serviceSuperLiga:SuperLigaService){
-    this.setAction();
+    this.setFiltersList();
   }
 
   ngOnInit() {}
 
-  setAction(){
-    var a = Object.values(this.serviceSuperLiga.actionsList);
+  setFiltersList(){
+    var a = Object.values(this.serviceSuperLiga.filterList);
     for (var i=0; i<a.length; i++) {
-      this.actionList.push(a[i]);
+      this.filterList.push(a[i]);
     }
   }
 
   search(){
-    console.log(this.action)
-    this.serviceSuperLiga.setNewAction(this.action);
+    this.serviceSuperLiga.setFilter(this.filter);
   }
 
   

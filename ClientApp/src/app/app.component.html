@@ -2,9 +2,9 @@
 <form #f="ngForm" class="card" style="width: 18rem;" >
   <div class="card-body">
     <h5 class="card-title">Filtros</h5>
-    <select class="custom-select custom-select-lg mb-3" [(ngModel)]="action"  [ngModelOptions]="{standalone: true}" requerid>
+    <select class="custom-select custom-select-lg mb-3" [(ngModel)]="filter"  [ngModelOptions]="{standalone: true}" requerid>
       <option [ngValue]="null" selected="true" ><p class="card-text">Select</p></option>
-      <option *ngFor="let a of actionList"><p class="card-text">{{a}}</p></option>
+      <option *ngFor="let a of filterList"><p class="card-text">{{a}}</p></option>
     </select>
     <button  (click)="search()" class="btn btn-primary" >Go</button>
   </div>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
@@ -8,32 +9,44 @@ import { Observable, Subject } from 'rxjs';
 
 export class SuperLigaService {
 
-  public actionsList = { list: 'Listado de socios', topFive: 'Nombres comunes en River', infoTeams: 'Informacion equipos' }
-  private action$ = new Subject<string>();
-  private actionToCall;
+  public filterList = { list: 'Listado de socios', topFive: 'Nombres comunes en River', infoTeams: 'Informacion equipos' }
+  private filter$ = new Subject<string>();
+  private endpoint;
+  private url="http://localhost:4380/api/";
 
-  constructor() { 
+  constructor(private http: HttpClient) { 
   }
 
-  public setNewAction(action:string){
-    this.action$.next(action);
-    this.setActionToCall(action)
-    console.log("action", this.actionToCall)
+  //Callas Web api
+  // public getList(): Observable<Array<any>> {
+  //   let url=this.url + this.endpoint;
+  //   return this.http.get<Array<any>>(url);
+  // }
 
+
+  //Filter selected By user
+  public getFilter(): Observable<string> {
+    return this.filter$.asObservable();
   }
 
-  public getAction(): Observable<string> {
-    return this.action$.asObservable();
+  public setFilter(action:string){
+    this.filter$.next(action);
+    this.setEndpoint(action)
   }
 
-  public setActionToCall(action){
-    for (var key in this.actionsList) {
-      if(this.actionsList[key]==action.toString()){
-        this.actionToCall=key;
+  public setEndpoint(action:string){
+    for (var key in this.filterList) {
+      if(this.filterList[key]==action.toString()){
+        this.endpoint=key.toString();
       }
     }
   }
 
+  //Renderization url
+  public showData(value :string): boolean{
+    return this.endpoint==value;
+  }
+  
   
 
 }
