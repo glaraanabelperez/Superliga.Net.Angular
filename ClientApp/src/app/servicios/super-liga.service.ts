@@ -24,7 +24,7 @@ export class SuperLigaService {
   // }
 
 
-  //Filter selected By user
+  //Establece endpoints y renderizado segun el filtro seleccionado 
   public getFilter(): Observable<string> {
     return this.filter$.asObservable();
   }
@@ -41,7 +41,6 @@ export class SuperLigaService {
       }
     }
   }
-
   //Renderization url
   public showData(value :string): boolean{
     return this.endpoint==value;

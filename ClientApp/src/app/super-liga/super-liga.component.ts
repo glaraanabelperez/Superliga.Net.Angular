@@ -21,6 +21,6 @@ export class SuperLigaComponent implements OnInit {
     this.filtro$.subscribe(action => this.filtro = action);
   }
 
-  //llamada segun fiñltro
+  //llamada segun filtro
 
 }
