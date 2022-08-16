@@ -9,16 +9,18 @@ import { SuperLigaService } from '../servicios/super-liga.service';
 })
 export class SuperLigaComponent implements OnInit {
 
-  public action$: Observable<string>;
-  public action=null;
+  public filtro$: Observable<string>;
+  public filtro=null;
 
   constructor( public serviceSuperLiga:SuperLigaService) { 
   
   }
 
   ngOnInit(): void {
-    this.action$ = this.serviceSuperLiga.getFilter();
-    this.action$.subscribe(action => this.action = action);
+    this.filtro$ = this.serviceSuperLiga.getFilter();
+    this.filtro$.subscribe(action => this.filtro = action);
   }
+
+  //llamada segun fiñltro
 
 }
