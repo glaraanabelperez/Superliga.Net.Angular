@@ -34,13 +34,13 @@ namespace Superliga.Logic
         public List<PartnerDto> GetTopOneHundred()
         {
             var records = base_
-                .Where(r => r.Split(';')[3].Contains("Soltero") 
+                .Where(r => r.Split(';')[3].Contains("Casado") 
                     && r.Split(';')[4].Contains("Universitario"))
                 .OrderBy(l => l.Split(';')[1])
                 .Take(100)
                 .Select(r => new PartnerDto  {  Name = r.Split(';')[0], 
                                                 Age = int.Parse(r.Split(';')[1]), 
-                                                Team = r.Split(';')[3] 
+                                                Team = r.Split(';')[2] 
                                               }).ToList();
 
             return records;

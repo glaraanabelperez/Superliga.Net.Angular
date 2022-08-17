@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-
+import { PartnersResponse, TeamsInfoResponse } from '../models/ISuperLiga';
 
 @Injectable({
   providedIn: 'root'
@@ -33,17 +33,17 @@ export class SuperLigaService {
     let url=this.url + "ageAverage";
     return this.http.get<number>(url);
   }
-  public getList(): Observable<Array<any>> {
+  public getList(): Observable<Array<PartnersResponse>> {
     let url=this.url + "list";
-    return this.http.get<Array<any>>(url);
+    return this.http.get<Array<PartnersResponse>>(url);
   }
   public getTopFive(): Observable<string> {
     let url=this.url + "topFive";
     return this.http.get<string>(url);
   }
-  public getInfoTeams(): Observable<Array<any>> {
+  public getInfoTeams(): Observable<Array<TeamsInfoResponse>> {
     let url=this.url + "infoTeams";
-    return this.http.get<Array<any>>(url);
+    return this.http.get<Array<TeamsInfoResponse>>(url);
   }
   
 

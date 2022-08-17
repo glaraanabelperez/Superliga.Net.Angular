@@ -1,11 +1,72 @@
 
 <div class="sidebar-slider" [class.sidebar-slide-in]="sidebarShow">
-  <button class="sidebar-close" (click)="sidebarShow = !sidebarShow">x</button>
-  hola
-    
+  <button class="sidebar-close" (click)="sidebarShow = !sidebarShow">x</button>  
+  
   <div class="sidebar-content">
+
     <div  *ngIf="this.filtro=='list'">
-        Rnderizar datos de la LLmada listado
+        <h2 class="card-title2">LISTADO DE SOCIOS</h2>
+        <div *ngFor="let e of partners">
+            <div  class="card" style="width: 18rem;">
+                <div class="card-body" >
+                  <h5 class="card-title mb-2 text-muted">Nombre: {{e.Name}}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Edad: {{e.Age}}</h6>
+                  <h6 class="card-subtitle mb-2 text-muted">Equipo: {{e.Team}}</h6>
+                </div>
+                
+            </div><br>
+        </div>
     </div>
+
+    <div  *ngIf="this.filtro=='infoteams'">
+        <h2 class="card-title2">LISTADO DE EQUIPOS</h2>
+        <div *ngFor="let e of infoTeams">
+            <div  class="card" style="width: 18rem;">
+                <div class="card-body" >
+                  <h5 class="card-title mb-2 text-muted">Nombre: {{e.Team}}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Edad: {{e.AgeAverage}}</h6>
+                  <h6 class="card-subtitle mb-2 text-muted">Equipo: {{e.AgeMax}}</h6>
+                  <h6 class="card-subtitle mb-2 text-muted">Equipo: {{e.AgeMin}}</h6>
+
+                </div>
+                
+            </div><br>
+        </div>
+    </div>
+
+    <div  *ngIf="this.filtro=='ageaverage'">
+        <h2 class="card-title2">EDAD PROMEDIO SOCIOS RACING</h2>
+        <div style="margin-top: 5%">
+            <div  class="card" style="width: 18rem;">
+                <div class="card-body" >
+                    <h5 class="card-title mb-2 text-muted" style="text-align: center;"> {{ageAverage}}</h5>              
+                </div>             
+            </div><br>
+        </div>
+    </div>
+
+    <div  *ngIf="this.filtro=='records'">
+        <h2 class="card-title2">CANTIDAD REGISTROS</h2>
+        <div style="margin-top: 5%">
+            <div  class="card" style="width: 18rem;">
+                <div class="card-body" >
+                    <h5 class="card-title mb-2 text-muted" style="text-align: center;"> {{records}} </h5>              
+                </div>             
+            </div><br>
+        </div>
+    </div>
+
+    <div  *ngIf="this.filtro=='topfive'">
+        <h2 class="card-title2">TOP FIVE NOMBRES EN RACING</h2>
+        <div *ngFor="let e of topFive" style="margin-top: 5%">
+            <div  class="card" style="width: 18rem;">
+                <div class="card-body" >
+                    <h5 class="card-title mb-2 text-muted" style="text-align: center;"> {{e}} </h5>              
+                </div>             
+            </div><br>
+        </div>
+    </div>
+
   </div>
+
 </div>

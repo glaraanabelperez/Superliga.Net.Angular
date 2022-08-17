@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { PartnersResponse, TeamsInfoResponse } from '../models/ISuperLiga';
 import { SuperLigaService } from '../servicios/super-liga.service';
 
 @Component({
@@ -12,6 +13,11 @@ export class SuperLigaComponent implements OnInit {
   public filtro$: Observable<string>;
   public filtro=null;
   public sidebarShow: boolean = false;
+  public partners:PartnersResponse[]=[];
+  public infoTeams:TeamsInfoResponse[]=[];
+  ageAverage: number;
+  records: number;
+  topFive;
   constructor( public serviceSuperLiga:SuperLigaService) { 
   
   }
@@ -58,50 +64,50 @@ export class SuperLigaComponent implements OnInit {
   getRecords() {
     this.serviceSuperLiga.gatRecords().subscribe(
       res=>{
-        console.log(res)  
+        this.records=res;  
       },
       error=>{
-        console.log(error)  
+        alert("Error de comunicacion")
       }
     );
   }
   getAgeAverage() {
     this.serviceSuperLiga.getAgeAverage().subscribe(
       res=>{
-        console.log(res)  
+        this.ageAverage=res; 
       },
       error=>{
-        console.log(error)  
+        alert("Error de comunicacion")
       }
     );
   }
   getList() {
       this.serviceSuperLiga.getList().subscribe(
         res=>{
-          console.log(res)  
+          this.partners=res.slice();
         },
         error=>{
-          console.log(error)  
+          alert("Error de comunicacion")
         }
       );
   }
   getTopFive() {
     this.serviceSuperLiga.getTopFive().subscribe(
       res=>{
-        console.log(res)  
+        this.topFive=res.slice()
       },
       error=>{
-        console.log(error)  
+        alert("Error de comunicacion")
       }
     );
   }
   getInfoTeams() {
     this.serviceSuperLiga.getInfoTeams().subscribe(
       res=>{
-        console.log(res)  
+        this.infoTeams=res.slice();
       },
       error=>{
-        console.log(error)  
+        alert("Error de comunicacion")
       }
     );
   }

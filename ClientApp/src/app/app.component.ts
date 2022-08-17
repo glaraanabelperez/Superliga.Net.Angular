@@ -16,15 +16,17 @@ export class AppComponent {
   public title = 'ClientApp';
   public filter:string;
   public filterList:Array<string>=[];
-
+  public s="s"
   constructor(public serviceSuperLiga:SuperLigaService){
     this.setFiltersList();
+    
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.filter="Seleccione"
+  }
 
   setFiltersList(){
-    this.serviceSuperLiga.filterList[0]
     var a = Object.values(this.serviceSuperLiga.filterList);
     for (var i=0; i<a.length; i++) {
       this.filterList.push(a[i]);
@@ -32,10 +34,17 @@ export class AppComponent {
   }
 
   search(){
-    var fil = Object.keys(this.serviceSuperLiga.filterList).find(x =>this.serviceSuperLiga.filterList[x]==this.filter);
+    var fil;
+    Object.keys(this.serviceSuperLiga.filterList).find(x =>{
+      if(this.serviceSuperLiga.filterList[x]===this.filter.toString()){
+        fil=x;
+      }
+    });
     this.serviceSuperLiga.setFilter(fil);
+    }
+      
+     
+    
   }
 
  
-
-}

@@ -1,12 +1,14 @@
-
-<form #f="ngForm" class="card" style="width: 18rem;" >
-  <div class="card-body">
-    <h5 class="card-title">Filtros</h5>
-    <select class="custom-select custom-select-lg mb-2" [(ngModel)]="filter"  [ngModelOptions]="{standalone: true}" requerid>
-      <option [ngValue]="null" selected="true" ><p class="card-text">Select</p></option>
-      <option *ngFor="let a of filterList"><p class="card-text">{{a}}</p></option>
-    </select>
-    <button  (click)="search()" class="btn btn-primary" >Go</button>
-  </div>
-</form>
-<app-super-liga></app-super-liga>
+<div class="base">
+  <h2>SUPERLIGA</h2>
+  <form class="card" style="width: 18rem;" >
+    <div class="card-body">
+      <h5 class="card-title">Filtros</h5>
+      <select class="custom-select custom-select-lg mb-2" [(ngModel)]="filter"  [ngModelOptions]="{standalone: true}" requerid>
+        <option value="" selected="true" >Seleccione</option>
+        <option *ngFor="let a of filterList" [value]="a">{{a}}</option>
+      </select>
+      <button  (click)="search()" class="btn btn-primary" >Go</button>
+    </div>
+  </form>
+  <app-super-liga></app-super-liga>
+</div>

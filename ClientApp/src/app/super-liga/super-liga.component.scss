@@ -26,6 +26,9 @@
     box-shadow: 2px 2px 5px gray;
 } 
 .sidebar-slider {
+    overflow-y: scroll;
+    scroll-behavior: auto;
+    scroll-behavior: smooth;
     position: fixed;
     top: 0;
     right: 0;
@@ -35,37 +38,55 @@
     transition: ease-in-out 300ms transform;
     width:63%;
     border-left: 2px solid gainsboro;
-
+    .sidebar-close {
+        position: fixed;
+        top: 0;
+        right: 0;
+        color: black;
+        cursor: pointer;
+        background-color: none;
+        border: none;
+        margin: 7px;
+        border-radius: 3px;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 21px;
+        font-weight: 400;
+    }
+    .sidebar-content {
+        
+        .card-title2{
+            color: #007bff;
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        display: flex;
+        flex-direction: column;
+        color: white;
+        font-size: 16px;
+        padding: 10px;
+        height: 100%;
+        margin-top:80px;
+         .card{
+            margin: auto;
+            .card-body{
+                .card-title{
+                    color: #007bff;
+                    font-size: 20px;
+                }
+            }
+          
+        }
+        
+    }
 }
 .sidebar-slider.sidebar-slide-in {
     transform: translateX(0%);
     transition: ease-in-out 600ms transform;
 }
-.sidebar-close {
-    position: fixed;
-    top: 0;
-    right: 0;
-    color: black;
-    cursor: pointer;
-    background-color: none;
-    border: none;
-    margin: 7px;
-    border-radius: 3px;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: 21px;
-    font-weight: 400;
-}
-.sidebar-content {
-    display: flex;
-    flex-direction: column;
-    color: white;
-    font-size: 16px;
-    padding: 10px;
-    height: 100%;
-    margin-top:66px;
-    
-}
+
+
 // .set-align{
 //     text-align: center;
 // }
