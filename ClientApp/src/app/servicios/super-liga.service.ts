@@ -57,7 +57,6 @@ export class SuperLigaService {
 
   public setFilter(action:string){
     this.filter$.next(action);
-    console.log(action)
   }
 
   

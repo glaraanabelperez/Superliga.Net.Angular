@@ -16,14 +16,13 @@ export class AppComponent {
   public title = 'ClientApp';
   public filter:string;
   public filterList:Array<string>=[];
-  public s="s"
+
   constructor(public serviceSuperLiga:SuperLigaService){
     this.setFiltersList();
     
   }
 
   ngOnInit() {
-    this.filter="Seleccione"
   }
 
   setFiltersList(){
