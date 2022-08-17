@@ -11,7 +11,7 @@ export class SuperLigaComponent implements OnInit {
 
   public filtro$: Observable<string>;
   public filtro=null;
-
+  public sidebarShow: boolean = false;
   constructor( public serviceSuperLiga:SuperLigaService) { 
   
   }
@@ -21,6 +21,7 @@ export class SuperLigaComponent implements OnInit {
     this.filtro$.subscribe(filtro => {
       this.filtro = filtro;
       this.callApi(filtro);
+      this.sidebarShow=true
     });
   }
 

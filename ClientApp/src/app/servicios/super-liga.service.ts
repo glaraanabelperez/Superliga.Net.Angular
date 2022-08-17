@@ -12,11 +12,11 @@ export class SuperLigaService {
   public filterList = { 
                           records: 'Total de registros', 
                           ageaverage: 'Edad promedio', 
-                          topfive: 'Nombres comunes en River',
-                          list: 'Listado socios (100)', 
-                          infoteams: 'Informacion equipos' 
+                          topfive: 'Nombres comunes',
+                          list: 'Listado de socios (100)', 
+                          infoteams: 'Informacion de equipos' 
                       }
-                      
+
   private filter$ = new Subject<string>();
   private url="https://localhost:44380/api/Partners/";
 

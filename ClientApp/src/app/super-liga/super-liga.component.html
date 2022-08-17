@@ -1,4 +1,11 @@
 
-<div *ngIf="this.filtro=='list'">
-Rnderizar datos de la LLmada listado
+<div class="sidebar-slider" [class.sidebar-slide-in]="sidebarShow">
+  <button class="sidebar-close" (click)="sidebarShow = !sidebarShow">x</button>
+  hola
+    
+  <div class="sidebar-content">
+    <div  *ngIf="this.filtro=='list'">
+        Rnderizar datos de la LLmada listado
+    </div>
+  </div>
 </div>
